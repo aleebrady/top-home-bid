@@ -7,11 +7,13 @@ class Home {
         this.city = home_obj.city
         this.area = home_obj.area
         this.year_built = home_obj.year_built
-        // this.bids
+        this.bids = home_obj.bids
         Home.all.push(this)
     }
 
     
+
+
     htmlify() {
         // return a string for one car in HTML 
         return (`
@@ -23,15 +25,27 @@ class Home {
             <p class="card-text">Area: ${this.area} </p>
             <p class="card-text">Built: ${this.year_built} </p>
             <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" id="home-${this.id}" class="btn btn-sm btn-outline-secondary bids-btn">Bids</button>
-              </div>
-              <small class="text-muted">3 bids</small>
+                <div class="btn-group">
+                    <button type="button" id="home-${this.id}" class="btn btn-sm btn-outline-secondary bids-btn">Bids</button>
+                </div>
+                    <small class="text-muted">${this.bids.length} bids</small>
+            </div>
+            <div class="d-flex justify-content-between align-items-center display-bid" id="bids-${this.id}">
+                <strong>Bids:</strong>
+                    <ul>
+                        ${this.bids.map(bid => `<li> ${bid.offer}: ${bid.agent} </li>`).join("")}   
+                    </ul>
             </div>
           </div>
         </div>
       </div>
         `)
+
+    //     <div class="btn-group">
+    //     <button type="button" id="home-${this.id}" class="btn btn-sm btn-outline-secondary bids-btn">Bids</button>
+    //   </div>
+    //   <small class="text-muted">3 bids</small>
+
     }
 
     static htmlifyAll() {
