@@ -30,11 +30,26 @@ class Home {
                 </div>
                     <small class="text-muted">${this.bids.length} bids</small>
             </div>
-            <div class="d-flex justify-content-between align-items-center display-bid" id="bids-${this.id}">
+            <div class="display-bid" id="bids-${this.id}">
+            <div class="d-flex justify-content-between align-items-center ">
                 <strong>Bids:</strong>
                     <ul>
                         ${this.bids.map(bid => `<li> ${bid.offer}: ${bid.agent} </li>`).join("")}   
                     </ul>
+                </div>
+                <div class="d-flex justify-content-between align-items-center ">
+                <form class="bid-form">
+                        <div class="form-group">
+                            <label>offer</label>
+                            <input type="number" class="form-control" id="bid-offer" aria-describedby="offer">
+                        </div>
+                        <div class="form-group">
+                        <label>agent</label>
+                        <input type="string" class="form-control" id="bid-agent" aria-describedby="agent">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
           </div>
         </div>

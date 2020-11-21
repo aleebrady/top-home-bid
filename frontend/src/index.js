@@ -23,6 +23,15 @@ function bindBidEvent() {
     }
 }
 
+function bindBidForm() {
+    const bidForms = document.querySelectorAll(".bid-form")
+    for(form of bidForms) {
+        form.addEventListener("submit", function(e){
+            const homeId = e.target.parentElement.parentElement.id.split("bids-")[1]
+        })
+    }
+}
+
 async function renderHomes() {
     const homes = await api.getAllHomes()
     for(home of homes){
@@ -32,6 +41,8 @@ async function renderHomes() {
     mainContent.innerHTML = ""
     mainContent.innerHTML = Home.renderAll()
     bindBidEvent()
+    bindBidForm()
+
     // mainContent.innerHTML += Home.renderAll()
 }
 
