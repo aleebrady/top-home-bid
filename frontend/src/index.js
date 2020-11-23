@@ -27,7 +27,16 @@ function bindBidForm() {
     const bidForms = document.querySelectorAll(".bid-form")
     for(form of bidForms) {
         form.addEventListener("submit", function(e){
+            e.preventDefault()
             const homeId = e.target.parentElement.parentElement.id.split("bids-")[1]
+            // const formData = new FormData(e.target) 
+            const bidData = {
+                home_id: homeId,
+                offer: e.target.querySelector(".bid-offer").value,
+                agent: e.target.querySelector(".bid-agent").value
+            }
+            api.postBid(bidData)
+            // check if log has errors, then alert, else render whole page
         })
     }
 }
