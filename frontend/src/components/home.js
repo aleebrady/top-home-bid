@@ -69,7 +69,6 @@ class Home {
     //     <button type="button" id="home-${this.id}" class="btn btn-sm btn-outline-secondary bids-btn">Bids</button>
     //   </div>
     //   <small class="text-muted">3 bids</small>
-
     }
 
     static htmlifyAll() {
@@ -92,10 +91,7 @@ class Home {
     }
 
     async postHome(homeObj) {
-        console.log(homeObj)
-        // const resp = await fetch(this.baseUrl+'/homes',{...this.options, body: JSON.stringify(homeObj)})
-        // const data = await resp.json()
-        // return data
+    
     }
 
 

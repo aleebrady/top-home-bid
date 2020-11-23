@@ -23,6 +23,12 @@ class ApiBid {
         return data
     }
 
+    async postHome(homeObj) {
+        const resp = await fetch(this.baseUrl+'/homes',{...this.options, body: JSON.stringify(homeObj)})
+        const data = await resp.json()
+        return data
+    }
+
     // getAllHomesthen() {
     //     fetch(this.baseUrl+'/homes')
     //     .then(resp => resp.json())

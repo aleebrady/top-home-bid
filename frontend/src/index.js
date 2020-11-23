@@ -5,6 +5,7 @@ const api = new ApiBid();
 
 const init = () => {
     renderHomes()
+    bindNewHomeForm()
     // bindEvents()
 }
 
@@ -39,6 +40,29 @@ function bindBidForm() {
             // check if log has errors, then alert, else render whole page
         })
     }
+}
+
+function bindNewHomeForm() {
+    const newHomeForm = document.getElementById("newHome")
+    newHomeForm.addEventListener("submit", function(e){
+        e.preventDefault()
+        const newHomeData = {
+            city: document.getElementById("form-city").value,
+            area: document.getElementById("form-area").value,
+            year_built: document.getElementById("form-built").value
+        }
+        // console.log(newHomeData)
+        api.postHome(newHomeData).then(resp => {
+            resp.bids = []
+            const home = new Home(resp);
+            //home.appendTo('#main-content .row')
+            const mainContent = document.querySelector("#main-content .row")
+            mainContent.innerHTML += home.htmlify()
+            bindBidEvent()
+            bindBidForm()
+        })
+
+    })
 }
 
 async function renderHomes() {

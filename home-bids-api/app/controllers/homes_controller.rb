@@ -14,4 +14,21 @@ class HomesController < ApplicationController
         end
     end
 
+    def create
+        @home = Home.new(home_params)
+
+        if @home.save
+            render json: @home, status: :created, location: @home
+        else
+            render json: @home.errors, status: :unprocessable_entity
+        end
+    end
+
+    private
+    
+    # Only allow a trusted parameter "white list" through.
+    def home_params
+      params.require(:home).permit(:city, :area, :year_built)
+    end
+
 end
