@@ -42,7 +42,7 @@ class Home {
             <div class="display-bid" id="bids-${this.id}">
             <div class="d-flex justify-content-between align-items-center ">
                 <strong>Bids:</strong>
-                    <ul>
+                    <ul class="bids">
                         ${this.bids.map(bid => `<li>$ ${bid.offer}: ${bid.agent} </li>`).join("")}   
                     </ul>
                 </div>
